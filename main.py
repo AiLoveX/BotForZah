@@ -57,8 +57,7 @@ def reply_message_handler(message):
 @bot.message_handler(content_types=['text'])
 def bot_message(message):
     if message.chat.type == 'private':
-        match message.text:
-            case "О университете":
+        if message.text == "О университете":
                 markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
                 item1 = types.KeyboardButton('Об университете')
                 item2 = types.KeyboardButton('Приемная комиссия')
@@ -67,14 +66,14 @@ def bot_message(message):
                 back = types.KeyboardButton('Назад')
                 markup.add(item1, item2, item3, item4, back)
                 bot.send_message(message.chat.id, 'Про что вы хотите узнать?', reply_markup=markup)
-            case "Календарь мероприятий":
+        elif message.text == "Календарь мероприятий":
                 bot.send_message(message.chat.id, '\n'.join(map(str, nw.сalendar_events())))
-            case "Факультеты":
+        elif message.text == "Факультеты":
                 bot.send_message(message.chat.id, 'Выберите факультет', parse_mode='html', reply_markup=cn.create_menu())
-            case "Задать вопрос":
+        elif message.text =="Задать вопрос":
                 bot.send_message(message.chat.id, 'Что бы задать вопрос введите команду\n /question')
                 return 0
-            case "Как поступить":
+        elif message.text =="Как поступить":
                 markup2 = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
                 butt1 = types.KeyboardButton('Для выпускников средних школ')
                 butt2 = types.KeyboardButton('Для абитуриентов, имеющих диплом СПО')
@@ -83,12 +82,12 @@ def bot_message(message):
                 markup2.add(butt1, butt2, butt3, back)
                 bot.send_message(message.chat.id,'Подать документы в Мининский университет можно одним из способов:')
                 bot.send_message(message.chat.id, '\n'.join(map(str, po.postuplenie())), reply_markup=markup2)
-            case "Назад":
+        elif message.text == "Назад":
                  back_start(message)
-            case "Об университете":
+        elif message.text == "Об университете":
                 bot.send_message(message.chat.id, opisanie.opisanie)
                 return 0
-            case "Приемная комиссия":
+        elif message.text == "Приемная комиссия":
                 bot.send_message(message.chat.id, f'Приемная комиссия Мининского университета работает: \n'
                                                   'с понедельника по пятницу с 9 до 16 часов\n'
                                                   'Адреса:\n'
@@ -98,24 +97,24 @@ def bot_message(message):
                                                   'Вы можете позвонить в приемную комиссию по телефонам:\n'
                                                   '+7(831)262-26-20\n+7(800)444-19-52\n'
                                                   '*1952\n Обратиться по электронной почте:\n priem@mininuniver.ru')
-            case "Последние новости":
+        elif message.text == "Последние новости":
                 bot.send_message(message.chat.id, '\n'.join(map(str, nw.last_news())))
                 return 0
-            case "Как добраться":
+        elif message.text == "Как добраться":
                 lat = 56.326248
                 lon = 44.007819
                 bot.send_location(message.chat.id, lat, lon)
                 bot.send_message(message.chat.id, 'Мы распологаемся по адресу:\n ул. Ульянова, 1, Нижний Новгород')
                 return 0
-            case "Для выпускников средних школ":
+        elif message.text == "Для выпускников средних школ":
                 bot.send_message(message.chat.id, '\n'.join(map(str, po.pravilaSchool())))
-            case "Для абитуриентов, имеющих диплом СПО":
+        elif message.text == "Для абитуриентов, имеющих диплом СПО":
                 bot.send_message(message.chat.id, '\n'.join(map(str, po.pravilaSPO())))
-            case "Для абитуриентов, имеющих диплом о высшем образовании":
+        elif message.text =="Для абитуриентов, имеющих диплом о высшем образовании":
                  bot.send_message(message.chat.id, '\n'.join(map(str, po.pravilaMag())))
-            case "Вернуться":
+        elif message.text =="Вернуться":
                 bot.send_message(message.chat.id, 'Выберите факультет', parse_mode='html', reply_markup=cn.create_menu())
-            case message.text:
+        elif message.text == message.text:
                 if (message.text[:7] == 'Кафедра'):
                     opis2 = cn.inforcafedr(message.text)
                     bot.send_message(message.chat.id, text=opis2, reply_markup=cn.create_napr(message.text))
