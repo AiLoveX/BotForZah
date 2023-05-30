@@ -10,7 +10,7 @@ from opisun import Opis
 logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG)"""
 
-bot = telebot.TeleBot(config.token)
+bot = telebot.TeleBot(config.token, threaded=False)
 
 cn = Knopki()
 nw = News()
