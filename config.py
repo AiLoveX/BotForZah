@@ -1,3 +1,3 @@
-token = '6159513125:AAEYB08dehFdCExVoENv6zOhck0z6ph8rhs'
+token = '6089878540:AAHW_XEQPuMcoLGRPTx9FkgkPYs0qA_p03Q'
 grup_id = '-973863800'
 bot_id = '1922500785'
