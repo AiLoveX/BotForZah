@@ -1,0 +1,5 @@
+telebot
+BeautifulSoup
+requests
+lxml
+psycopg2
