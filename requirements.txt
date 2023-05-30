@@ -1,3 +1,4 @@
+install --upgrade pip
 telebot
 beautifulsoup4
 requests
