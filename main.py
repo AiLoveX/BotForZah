@@ -1,7 +1,6 @@
 import telebot
 from telebot import types
 import config
-from connect import CreateMenu
 from knopki import Knopki
 from news import News
 from postup import Postup
@@ -13,7 +12,6 @@ telebot.logger.setLevel(logging.DEBUG)"""
 
 bot = telebot.TeleBot(config.token)
 
-cm = CreateMenu()
 cn = Knopki()
 nw = News()
 po = Postup()
