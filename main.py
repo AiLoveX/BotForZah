@@ -127,4 +127,4 @@ def napravlenie(call):
      bot.answer_callback_query(call.id)
 
 
-bot.polling()
+bot.polling(none_stop=True)
