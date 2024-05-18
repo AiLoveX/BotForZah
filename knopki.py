@@ -3,7 +3,7 @@ from telebot import types
 
 class Knopki:
     def __init__(self):
-        self.conn = psycopg2.connect("postgres://mininuser:bGwT4IaNI2fagmpDr3i9o1xpGtWDzwPj@dpg-chqlnaqk728ivvu8etjg-a.frankfurt-postgres.render.com/users_6mql")
+        self.conn = psycopg2.connect("postgres://path")
         self.cursor = self.conn.cursor()
 
     def knobut(self)-> dict:
